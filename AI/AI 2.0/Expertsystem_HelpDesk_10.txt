@@ -1,0 +1,70 @@
+cclass HelpDeskExpertSystem:
+    def __init__(self):
+        self.rules = {
+            'password_reset': {
+                'forgot_password': True,
+                'account_locked': False,
+                'technical_issue': False,
+            },
+            'account_issue': {
+                'forgot_password': False,
+                'account_locked': True,
+                'technical_issue': False,
+            },
+            'technical_support': {
+                'forgot_password': False,
+                'account_locked': False,
+                'technical_issue': True,
+            },
+            'escalate_to_support': {
+                'forgot_password': False,
+                'account_locked': False,
+                'technical_issue': False,
+            }
+        }
+
+    def handle_request(self):
+        print("Welcome to the Help Desk Management System!")
+        print("Please answer the following questions to get assistance.\n")
+        
+        # Collecting user input regarding their issue
+        issue = {
+            'forgot_password': input("Did you forget your password? (yes/no): ").strip().lower() == 'yes',
+            'account_locked': input("Is your account locked? (yes/no): ").strip().lower() == 'yes',
+            'technical_issue': input("Are you experiencing a technical issue? (yes/no): ").strip().lower() == 'yes',
+        }
+
+        # Categorize the issue based on rules
+        response = self.apply_rules(issue)
+
+        # Provide the solution or escalate to support if necessary
+        print("\nHelp Desk Response:")
+        print(response)
+
+    def apply_rules(self, issue):
+        for category, criteria in self.rules.items():
+            match = True
+            for symptom, value in criteria.items():
+                if issue[symptom] != value:
+                    match = False
+                    break
+            if match:
+                return f"Your issue is categorized as: {category.replace('_', ' ').title()}.\nSolution: {self.get_solution(category)}"
+        
+        return "Your issue could not be resolved by the system. Please contact customer support."
+
+    def get_solution(self, category):
+        solutions = {
+            'password_reset': "Please follow the password reset instructions sent to your email.",
+            'account_issue': "Please verify your account details and try logging in again. If the issue persists, contact support.",
+            'technical_support': "Please ensure your software is up to date. If the issue continues, contact technical support.",
+            'escalate_to_support': "Your issue requires further assistance. Please contact our support team."
+        }
+        return solutions.get(category, "We are unable to provide a solution at this time.")
+
+
+# Example usage
+if __name__ == "__main__":
+    expert_system = HelpDeskExpertSystem()
+    expert_system.handle_request()
+

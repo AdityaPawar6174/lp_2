@@ -1,0 +1,40 @@
+def is_safe(queens, row, col):
+    for r in range(row):
+        c = queens[r]
+        # Check column and diagonals
+        if c == col or abs(c - col) == abs(r - row):
+            return False
+    return True
+
+def solve_n_queens(n):
+    solutions = []
+    queens = [-1] * n  # queens[i] = column position of queen at row i
+
+    def backtrack(row):
+        if row == n:
+            # All queens are placed
+            solutions.append(queens[:])
+            return
+        for col in range(n):
+            if is_safe(queens, row, col):  # Branch and Bound: prune unsafe paths
+                queens[row] = col
+                backtrack(row + 1)
+                queens[row] = -1  # Backtrack
+
+    backtrack(0)
+    return solutions
+
+def print_solutions(solutions, n):
+    for index, sol in enumerate(solutions):
+        print(f"\nSolution {index + 1}:")
+        for row in sol:
+            line = ['.'] * n
+            line[row] = 'Q'
+            print(' '.join(line))
+
+# Example usage
+if __name__ == "__main__":
+    N = 4  # Change to 8 for the 8-Queens problem
+    results = solve_n_queens(N)
+    print(f"Total solutions for {N}-Queens: {len(results)}")
+    print_solutions(results, N)

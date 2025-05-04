@@ -1,0 +1,44 @@
+class Job:
+    def __init__(self, job_id, deadline, profit):
+        self.job_id = job_id
+        self.deadline = deadline
+        self.profit = profit
+
+    def __repr__(self):
+        return f"Job({self.job_id}, deadline={self.deadline}, profit={self.profit})"
+
+def job_scheduling(jobs):
+    # Step 1: Sort jobs by descending profit
+    jobs.sort(key=lambda job: job.profit, reverse=True)
+
+    # Step 2: Find max deadline to size the schedule
+    max_deadline = max(job.deadline for job in jobs)
+    time_slots = [None] * max_deadline  # None means the slot is free
+
+    total_profit = 0
+    job_order = []
+
+    for job in jobs:
+        # Try to schedule job at the last possible free slot before deadline
+        for slot in range(min(job.deadline, max_deadline) - 1, -1, -1):
+            if time_slots[slot] is None:
+                time_slots[slot] = job
+                total_profit += job.profit
+                job_order.append(job.job_id)
+                break
+
+    return job_order, total_profit
+
+# Example usage
+if __name__ == "__main__":
+    jobs = [
+        Job('J1', 2, 100),
+        Job('J2', 1, 19),
+        Job('J3', 2, 27),
+        Job('J4', 1, 25),
+        Job('J5', 3, 15),
+    ]
+
+    order, profit = job_scheduling(jobs)
+    print("Scheduled job order:", order)
+    print("Total profit:", profit)

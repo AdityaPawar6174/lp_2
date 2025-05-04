@@ -1,0 +1,44 @@
+class Graph:
+    def __init__(self):
+        self.adjacency_list = {}
+
+    def add_vertex(self, vertex):
+        if vertex not in self.adjacency_list:
+            self.adjacency_list[vertex] = []
+
+    def add_edge(self, u, v):
+        # Since the graph is undirected, add both ways
+        if u not in self.adjacency_list:
+            self.add_vertex(u)
+        if v not in self.adjacency_list:
+            self.add_vertex(v)
+        self.adjacency_list[u].append(v)
+        self.adjacency_list[v].append(u)
+
+    def dfs(self, start):
+        visited = set()
+        self._dfs_recursive(start, visited)
+
+    def _dfs_recursive(self, vertex, visited):
+        if vertex in visited:
+            return
+        visited.add(vertex)
+        print(vertex)
+
+        for neighbor in self.adjacency_list[vertex]:
+            if neighbor not in visited:
+                self._dfs_recursive(neighbor, visited)
+
+# Example usage
+if __name__ == "__main__":
+    graph = Graph()
+    
+    # Add vertices and edges
+    graph.add_edge('A', 'B')
+    graph.add_edge('A', 'C')
+    graph.add_edge('B', 'D')
+    graph.add_edge('C', 'E')
+    graph.add_edge('D', 'E')
+
+    print("DFS traversal starting from A:")
+    graph.dfs('A')

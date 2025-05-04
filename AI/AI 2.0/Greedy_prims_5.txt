@@ -1,0 +1,55 @@
+import heapq
+from collections import defaultdict
+
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self, u, v, weight):
+        # Undirected graph: add both directions
+        self.graph[u].append((v, weight))
+        self.graph[v].append((u, weight))
+
+    def prim_mst(self, start_vertex):
+        visited = set()
+        min_heap = [(0, start_vertex)]  # (weight, vertex)
+        mst_cost = 0
+        mst_edges = []
+
+        while min_heap:
+            weight, current_vertex = heapq.heappop(min_heap)
+
+            if current_vertex in visited:
+                continue
+
+            visited.add(current_vertex)
+            mst_cost += weight
+
+            if weight != 0:
+                mst_edges.append((prev_vertex, current_vertex, weight))
+
+            for neighbor, edge_weight in self.graph[current_vertex]:
+                if neighbor not in visited:
+                    heapq.heappush(min_heap, (edge_weight, neighbor))
+                    # Track where this edge came from
+                    if edge_weight == weight:
+                        prev_vertex = current_vertex
+
+        print("Edges in MST:")
+        for u, v, w in mst_edges:
+            print(f"{u} - {v} with weight {w}")
+        print("Total cost of MST:", mst_cost)
+
+# Example usage
+if __name__ == "__main__":
+    g = Graph()
+    g.add_edge('A', 'B', 2)
+    g.add_edge('A', 'C', 3)
+    g.add_edge('B', 'C', 1)
+    g.add_edge('B', 'D', 4)
+    g.add_edge('C', 'D', 5)
+    g.add_edge('C', 'E', 6)
+    g.add_edge('D', 'E', 7)
+
+    print("Prim's MST starting from vertex A:")
+    g.prim_mst('A')
