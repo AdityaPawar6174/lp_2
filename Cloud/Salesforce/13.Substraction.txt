@@ -1,0 +1,44 @@
+To create a Salesforce application using Apex that performs the subtraction of two numbers, follow the same steps as before with slight modifications.
+
+✅ Step 1: Create the Apex Class
+Go to Developer Console > File > New > Apex Class
+Name it: Subtraction
+
+Paste this code:
+
+apex
+Copy
+Edit
+public class Subtraction {
+    public static Integer subtractNumbers(Integer a, Integer b) {
+        return a - b;
+    }
+}
+✅ Step 2: Run the Code
+Go to Debug > Open Execute Anonymous Window
+Paste this:
+
+apex
+Copy
+Edit
+Integer result = Subtraction.subtractNumbers(25, 10);
+System.debug('Result is: ' + result);
+Then click Execute.
+
+✅ Step 3: View Output
+Go to the Logs tab in Developer Console
+
+Open the most recent log
+
+Search for:
+
+nginx
+Copy
+Edit
+USER_DEBUG
+You should see:
+
+pgsql
+Copy
+Edit
+USER_DEBUG [2]|DEBUG|Result is: 15

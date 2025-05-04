@@ -1,0 +1,46 @@
+Getting started with compute:
+
+1.  lauch your EC2 instance
+
+2. monitor and troubleshoot your EC2 instance
+
+3. Update EC2 security group
+
+4. connecting to your instance using aws fleet manager
+
+5. Resizing your instance
+
+6. testing termination protection
+
+7. end 
+
+----------------------------
+getting started with storage:
+
+1. creating bucket in s3
+
+2. configuring static website on s3
+
+3. uploading content to bucket
+
+4. turning public access to the object
+
+5.securely sharing public object using presigned url
+
+6.secure the bucketb using bucket policy
+
+7.updating website
+
+8.exploring file versions
+
+-----------------------------
+getting started with database:
+
+1. Task 1: Create an Amazon RDS database
+
+2. Task 2: Configure a web application communication with the database instance
+
+3. Task 3: Monitor the database instance
+
+4. Task 4: Perform operations on the database
+

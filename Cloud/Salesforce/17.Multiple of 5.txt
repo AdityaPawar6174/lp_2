@@ -1,0 +1,35 @@
+✅ Step 1: Apex Class — TableOfFive
+Create this class:
+
+apex
+Copy
+Edit
+public class TableOfFive {
+    public static void printTable() {
+        for (Integer i = 1; i <= 10; i++) {
+            System.debug('5 x ' + i + ' = ' + (5 * i));
+        }
+    }
+}
+✅ Step 2: Run from Execute Anonymous Window
+Go to Developer Console > Debug > Open Execute Anonymous Window
+Paste this:
+
+apex
+Copy
+Edit
+TableOfFive.printTable();
+Click Execute.
+
+✅ Output (in Logs)
+You’ll see:
+
+python-repl
+Copy
+Edit
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50
+Check it under the Logs tab → search for USER_DEBUG.

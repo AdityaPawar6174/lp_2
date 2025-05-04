@@ -1,0 +1,33 @@
+✅ Step 1: Apex Class — WelcomeMessage
+Create this Apex class:
+
+apex
+Copy
+Edit
+public class WelcomeMessage {
+    public static void printMessage() {
+        System.debug('Welcome to Apex Programming Language of Salesforce Platform');
+    }
+}
+✅ Step 2: Run from Execute Anonymous Window
+Go to Developer Console > Debug > Open Execute Anonymous Window
+
+Paste the following code:
+
+apex
+Copy
+Edit
+WelcomeMessage.printMessage();
+Click Execute.
+
+✅ Output in Logs
+Open the Logs tab in Developer Console.
+
+Find the latest log and search for USER_DEBUG.
+
+You should see:
+
+pgsql
+Copy
+Edit
+Welcome to Apex Programming Language of Salesforce Platform

@@ -1,0 +1,79 @@
+✅ Step-by-Step Guide to Create the Application
+1. Log in to Salesforce Developer Org
+Go to: https://developer.salesforce.com/
+If you don’t have an account, create a free developer account.
+
+2. Open Developer Console
+Click your avatar in the top right
+
+Select Developer Console
+
+3. Create an Apex Class
+Go to:
+
+File > New > Apex Class
+
+Name it: AdditionDemo
+
+Paste the following code:
+
+apex
+Copy
+Edit
+public class AdditionDemo {
+    public static Integer addNumbers(Integer a, Integer b) {
+        return a + b;
+    }
+}
+4. Execute the Code
+To run and test it:
+
+Go to Debug > Open Execute Anonymous Window
+
+Enter the following:
+
+apex
+Copy
+Edit
+Integer result = AdditionDemo.addNumbers(10, 20);
+System.debug('The result is: ' + result);
+Check the output in Debug Logs
+
+🔁 If You’re Still Getting an Error
+Double-check:
+
+Class name is Addition (not AdditionDemo)
+
+Method is public static
+
+You're passing two Integer arguments
+
+Save and compile the class before running code
+
+
+
+✅ How to View Output (Debug Log)
+Open Developer Console (if not already open)
+
+Click your avatar in Salesforce > Developer Console
+
+Go to Logs tab (bottom panel)
+
+Or click Debug > View Log Panels > Logs
+
+Look for the most recent log entry (based on time)
+
+Double-click the latest log entry
+
+Inside the log, press Ctrl + F (or Cmd + F) and search:
+
+nginx
+Copy
+Edit
+USER_DEBUG
+Or search:
+
+csharp
+Copy
+Edit
+Result is:

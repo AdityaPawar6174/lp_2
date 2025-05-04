@@ -1,0 +1,41 @@
+✅ Step 1: Create Apex Class
+Open Developer Console > File > New > Apex Class
+Name: Division
+
+Paste this code:
+
+apex
+Copy
+Edit
+public class Division {
+    public static Decimal divideNumbers(Decimal a, Decimal b) {
+        if (b == 0) {
+            // Avoid division by zero
+            throw new ArithmeticException('Cannot divide by zero');
+        }
+        return a / b;
+    }
+}
+✅ Step 2: Execute the Code
+Open Debug > Open Execute Anonymous Window
+
+Paste this code:
+
+apex
+Copy
+Edit
+Decimal result = Division.divideNumbers(20, 4);
+System.debug('Result is: ' + result);
+Click Execute.
+
+✅ Step 3: Check Output
+In the Logs tab of Developer Console
+
+Open the latest log
+
+Search for:
+
+nginx
+Copy
+Edit
+USER_DEBUG

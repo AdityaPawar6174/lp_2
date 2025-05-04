@@ -1,0 +1,54 @@
+✅ Step 1: Apex Class — Calculator
+apex
+Copy
+Edit
+public class Calculator {
+    public static Decimal add(Decimal a, Decimal b) {
+        return a + b;
+    }
+
+    public static Decimal subtract(Decimal a, Decimal b) {
+        return a - b;
+    }
+
+    public static Decimal multiply(Decimal a, Decimal b) {
+        return a * b;
+    }
+
+    public static Decimal divide(Decimal a, Decimal b) {
+        if (b == 0) {
+            throw new ArithmeticException('Cannot divide by zero');
+        }
+        return a / b;
+    }
+}
+✅ Step 2: Test in Execute Anonymous Window
+Go to Developer Console > Debug > Open Execute Anonymous Window
+Paste and run this:
+
+apex
+Copy
+Edit
+Decimal a = 20;
+Decimal b = 4;
+
+System.debug('Add: ' + Calculator.add(a, b));
+System.debug('Subtract: ' + Calculator.subtract(a, b));
+System.debug('Multiply: ' + Calculator.multiply(a, b));
+System.debug('Divide: ' + Calculator.divide(a, b));
+✅ Output
+Check the Logs tab, and search for:
+
+nginx
+Copy
+Edit
+USER_DEBUG
+You’ll see:
+
+makefile
+Copy
+Edit
+Add: 24
+Subtract: 16
+Multiply: 80
+Divide: 5

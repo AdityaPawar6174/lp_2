@@ -1,0 +1,37 @@
+✅ Step 1: Create Apex Class
+Go to Developer Console > File > New > Apex Class
+Class Name: Multiplication
+
+Paste this code:
+
+apex
+Copy
+Edit
+public class Multiplication {
+    public static Integer multiplyNumbers(Integer a, Integer b) {
+        return a * b;
+    }
+}
+✅ Step 2: Execute the Code
+Go to Debug > Open Execute Anonymous Window
+
+Paste the following code:
+
+apex
+Copy
+Edit
+Integer result = Multiplication.multiplyNumbers(6, 7);
+System.debug('Result is: ' + result);
+Click Execute.
+
+✅ Step 3: View the Output
+Go to the Logs tab in Developer Console
+
+Open the latest log
+
+Search for:
+
+nginx
+Copy
+Edit
+USER_DEBUG
